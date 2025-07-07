@@ -106,6 +106,7 @@ Where:
 ```
 <length>                ULEB128 indicating length of <configuration strings> in bytes
 <configuration strings> Comma separated list of strings
+<status>                Byte return code where a non-zero value indicates an error
 ```
 
 ### MESSAGE: "error:"
@@ -151,6 +152,7 @@ Where:
 <flags>     ULEB128 bit field for future flag use
 <num words> ULEB128 number of 32-bit words in data
 <data>      Binary DPC packet payload including header and CRC
+<status>    Byte return code where a non-zero value indicates an error
 ```
 
 ### MESSAGE: "edpc:"
@@ -174,6 +176,7 @@ Where:
 <flags>     ULEB128 bit field for future flag use
 <num words> ULEB128 number of 32-bit words being returned
 <data>      Binary DPC payload data, skipped if <num words> is 0.
+<status>    Byte return code where a non-zero value indicates an error
 ```
 
 # Build Instructions
