@@ -101,6 +101,7 @@ Where:
 <address> ULEB128 starting address for memory read
 <num bytes> ULEB128 number of bytes to read
 <data> byte vector of data read
+<status> byte return code where a non-zero value indicates an error
 ```
 
 ### MESSAGE: "mwr:"
@@ -125,6 +126,7 @@ Where:
 <address> ULEB128 starting address for memory write
 <num bytes> ULEB128 number of bytes to write
 <data> byte vector to write
+<status> byte return code where a non-zero value indicates an error
 ```
 
 ### MESSAGE: "settck:"
