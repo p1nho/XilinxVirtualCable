@@ -1,5 +1,5 @@
-export CROSS_COMPILE := aarch64-linux-gnu-
-export ARCH := arm64
+export CROSS_COMPILE ?= aarch64-linux-gnu-
+export ARCH ?= arm64
 MYCC := $(CROSS_COMPILE)gcc
 
 DRIVER := xilinx_xvc_driver
