@@ -1,6 +1,6 @@
 DRIVER := xilinx_xvc_driver
-export CROSS_COMPILE := aarch64-linux-gnu-
-export ARCH := arm64
+export CROSS_COMPILE ?= aarch64-linux-gnu-
+export ARCH ?= arm64
 
 ccflags-y := -DLOG_PREFIX=\"$(DRIVER):\ \"
 $(DRIVER)-y := \
