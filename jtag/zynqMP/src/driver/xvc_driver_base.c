@@ -115,7 +115,11 @@ int probe(struct platform_device* pdev) {
 	struct device* xvc_ioc_device = NULL;
 
 	if (!xvc_dev_class) {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0)
+		xvc_dev_class = class_create(XVC_DRIVER_NAME);
+#else
 		xvc_dev_class = class_create(THIS_MODULE, XVC_DRIVER_NAME);
+#endif
 		if (IS_ERR(xvc_dev_class)) {
 			xil_xvc_cleanup();
 			dev_err(&pdev->dev, "unable to create class\n");
@@ -186,7 +190,12 @@ int probe(struct platform_device* pdev) {
 	return 0;
 }
 
-static int remove(struct platform_device* pdev) {
+#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 11, 0)
+static int remove(struct platform_device* pdev)
+#else
+static void remove(struct platform_device* pdev)
+#endif
+{
 	int i;
 	dev_t ioc_device_number;
 	if (pdev) {
@@ -218,8 +227,9 @@ static int remove(struct platform_device* pdev) {
 			}
 		}
 	}
-
+#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 11, 0)
 	return 0;
+#endif
 }
 
 static const struct of_device_id xvc_of_ids[] = {
