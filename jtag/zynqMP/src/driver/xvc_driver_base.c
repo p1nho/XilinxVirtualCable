@@ -184,6 +184,8 @@ int probe(struct platform_device* pdev) {
 			} else {
 				printk(KERN_INFO LOG_PREFIX "Mapped debug bridge at offset 0x%lX, size 0x%lX", db_addr, db_size);
 			}
+
+			break;
 		}
 	}
 
